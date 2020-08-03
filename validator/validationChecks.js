@@ -56,14 +56,24 @@ exports.validate = function checkValidation(username,age,height,gender,salesAmou
     } else if (_.isUndefined(validationRule.type) && _.isEmpty(validationRule.type) && validationRule.type == 'STRING') {
         let size = validationRule.size;
 
-        if (!_.isUndefined(size) || !_.isEmpty(size)) {
+        if (!_.isUndefined(size) && !_.isEmpty(size)) {
             if (username.length >= +size && validationRule.saveAs == "USER_NAME") {
                 message = "Length of Username :" + username + " exceeds its limit"+ size;
                 isValid = false;
                 return [isValid,message];
             }
+            if (_.isEmpty(username)) {
+                message = "UserName should not be empty "+ size;
+                isValid = false;
+                return [isValid,message];
+            }
             if (gender.length >= +size && validationRule.saveAs == "GENDER") {
                 message = "Length of Gender :" + gender + " exceeds its limit"+ size;
+                isValid = false;
+                return [isValid,message];
+            }
+            if (_.isEmpty(gender)) {
+                message = "Gender should not be empty "+ size;
                 isValid = false;
                 return [isValid,message];
             }
