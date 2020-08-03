@@ -77,5 +77,5 @@ exports.validate = function checkValidation(username,age,height,gender,salesAmou
     }
 });
   //  console.log(false)
-    return [false,message];
+    return [true,message];
 }

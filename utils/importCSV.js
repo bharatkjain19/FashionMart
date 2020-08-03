@@ -17,7 +17,8 @@ const headers = {
     SALES_AMOUNT: 1,
 	LAST_PURCHASE_DATE: 'yyyy-mm-ddThh:mm:ss'
 };
-const loadCSV = (request, response, callback) => {
+
+const loadCSV = (request, response) => {
 
 let csvStream = csv.parseFile('.\\customerData\\customers.csv', {headers: true})
     .on("data", function(record){
@@ -32,7 +33,7 @@ let csvStream = csv.parseFile('.\\customerData\\customers.csv', {headers: true})
 
             if (!values[0]) {
                 statusCode = 400;
-                throw new Error(values[1]);
+                throw(values[1]);
             }else {
                 pool.query("INSERT INTO CUSTOMER (USER_NAME, AGE, HEIGHT, GENDER,SALES_AMOUNT, LAST_PURCHASE_DATE) \ Values($1, $2, $3, $4, $5, $6)",
                 [username, age, height, gender, salesAmount, lastPurchaseDate], function(err){
@@ -42,6 +43,8 @@ let csvStream = csv.parseFile('.\\customerData\\customers.csv', {headers: true})
                 });
                 message = "CSV Data persisted to db successfully";
                 statusCode = 200;
+                isValid = true;
+
             }
     }).on("end", function(){
         console.log("Parsing done");
