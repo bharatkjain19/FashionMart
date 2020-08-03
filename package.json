@@ -1,0 +1,20 @@
+{
+  "name": "customerdatamanagement",
+  "version": "1.0.0",
+  "description": "Customer Data Management",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bharat Kumar Jain",
+  "license": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "date-and-time": "^0.13.1",
+    "express": "^4.17.1",
+    "fast-csv": "^4.3.1",
+    "pg": "^8.3.0",
+    "request": "^2.88.2",
+    "underscore": "^1.10.2"
+  }
+}

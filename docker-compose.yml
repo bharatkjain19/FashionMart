@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  customerdatamanagement:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: customerdatamanagement:latest
+    container_name: customerdatamanagement
+    hostname: customerdatamanagement
+    restart: always
+    ports:
+      - "8088:80"
