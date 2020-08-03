@@ -1,7 +1,7 @@
 
 const pool = require('./utils/query');
 const csv = require('./utils/importCSV');
-
+const _ = require('underscore');
 
 pool.connect(function(err){
     if(err){
